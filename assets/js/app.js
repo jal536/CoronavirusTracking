@@ -28,15 +28,15 @@ d3.csv("..infections.csv").then(function(Data) {
 
     // number conversion
     Data.forEach(function(xdata) {
-        xdata.Jan22 = +xdata.Jan22;
+        xdata.1/22/2020 = +xdata.1/22/2020;
         xdata.Combined_Key = +xdata.Combined_Key;
 
     });
 
     // x function
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(Data, d=>d.Jan22)*0.9,
-            d3.max(Data, d => d.Jan22)*1.1])
+        .domain([d3.min(Data, d=>d.1/22/2020)*0.9,
+            d3.max(Data, d => d.1/22/2020)*1.1])
         .range([0, width]);        
 
     // y function
