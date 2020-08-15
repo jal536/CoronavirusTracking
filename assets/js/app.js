@@ -24,19 +24,23 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 
-d3.csv("..infections.csv").then(function(Data) {
-
+d3.csv("/infections.csv").then(function(Data) {
+  //console.log(Data.columns.slice(1));
     // number conversion
+
+    var cols = Data.columns.slice(1);
+    console.log(cols);
     Data.forEach(function(xdata) {
-        xdata.1/22/2020 = +xdata.1/22/2020;
+      // console.log(xdata);
+        xdata["1/22/2020"] = +xdata["1/22/2020"];
         xdata.Combined_Key = +xdata.Combined_Key;
 
     });
 
     // x function
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(Data, d=>d.1/22/2020)*0.9,
-            d3.max(Data, d => d.1/22/2020)*1.1])
+        .domain([d3.min(Data, d=>d["1/22/2020"])*0.9,
+            d3.max(Data, d => d["1/22/2020"])*1.1])
         .range([0, width]);        
 
     // y function
